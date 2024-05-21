@@ -40,3 +40,13 @@ func TestInterfaceMethods(t *testing.T) {
 	phone = Iphone{color: "red"}
 	fmt.Println(phone.call("123456"))
 }
+
+func TestPointerMethods(t *testing.T) {
+	var a *int
+	b := 10
+	a = &b
+	t.Log(a)
+	t.Log(&a)
+	t.Log(&b)
+	t.Log(*a)
+}
