@@ -2,19 +2,19 @@ package _interface
 
 import "testing"
 
-type Programer interface {
+type Programme interface {
 	sayHello() string
 }
 
-type JavaProgramer struct {
+type JavaProgrammer struct {
 }
 
-func (pg *JavaProgramer) sayHello() string {
+func (pg *JavaProgrammer) sayHello() string {
 	return "tom"
 }
 
 func TestVisitUser(t *testing.T) {
-	var programe Programer
-	programe = new(JavaProgramer)
-	t.Logf("hello %s", programe.sayHello())
+	var programme Programme
+	programme = new(JavaProgrammer)
+	t.Logf("hello %s", programme.sayHello())
 }
