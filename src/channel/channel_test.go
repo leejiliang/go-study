@@ -17,11 +17,11 @@ func addData(ch chan int) {
 	}()
 }
 
-func receiveData(ch chan int, wg *sync.WaitGroup) {
+func receiveData(ch chan int, wg *sync.WaitGroup, name string) {
 	go func() {
 		for {
 			if i, ok := <-ch; ok {
-				fmt.Printf("reveive data: %d \n", i)
+				fmt.Printf("%s, reveive data: %d \n", name, i)
 				time.Sleep(time.Millisecond * 100)
 			} else {
 				break
@@ -34,10 +34,11 @@ func receiveData(ch chan int, wg *sync.WaitGroup) {
 
 func TestChannel(t *testing.T) {
 	var wg sync.WaitGroup
-	wg.Add(1)
+	wg.Add(2)
 	var cChan = make(chan int, 10)
 	addData(cChan)
-	receiveData(cChan, &wg)
+	receiveData(cChan, &wg, "re1")
+	receiveData(cChan, &wg, "re2")
 	t.Log(" executed over")
 	wg.Wait()
 }
