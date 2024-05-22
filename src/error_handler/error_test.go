@@ -3,6 +3,7 @@ package error_handler
 import (
 	"errors"
 	"fmt"
+	"go-study/src/common"
 	"os"
 	"testing"
 )
@@ -25,4 +26,8 @@ func TestErrorHandler3(t *testing.T) {
 	}()
 	t.Log("programme start")
 	panic(errors.New("遇到了麻煩。。。"))
+}
+
+func TestCommonUsage(t *testing.T) {
+	t.Logf("cal result is : %d", common.Square(8))
 }
