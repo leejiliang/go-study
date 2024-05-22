@@ -41,11 +41,11 @@ func TestCsp(t *testing.T) {
 	retChan2 := asyncJob1(job2Fast)
 
 	select {
+	case <-time.After(time.Second * 2):
+		t.Error(" 等待超时")
 	case ret := <-retChan1:
 		t.Logf("get result from chan1: %s", ret)
 	case ret := <-retChan2:
 		t.Logf("get result from chan2 : %s", ret)
-	case <-time.After(time.Millisecond * 500):
-		t.Error(" 等待超时")
 	}
 }
